@@ -1,0 +1,27 @@
+{
+  "name": "public-api-project",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/DenkuKuro/Public-API-project#readme",
+  "bugs": {
+    "url": "https://github.com/DenkuKuro/Public-API-project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DenkuKuro/Public-API-project.git"
+  },
+  "license": "ISC",
+  "author": "Javier Deng",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
