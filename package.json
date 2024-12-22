@@ -12,7 +12,7 @@
   },
   "license": "ISC",
   "author": "Javier Deng",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
