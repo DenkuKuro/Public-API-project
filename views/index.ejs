@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Teko:wght@300..700&display=swap" rel="stylesheet">
     <title>Anime Covers</title>
 </head>
 <body>
-    <h1>Im working on it ;-;</h1>
-
-    <div class="form container">
-        <form>
-
+    <div class="form-container">
+        <h1>Manga Cover Displayer</h1>
+        <form action="/manga-cover" id="title-form" method="post" >
+            <label for="mangaTitle" class="label">Title:</label>
+            <input placeholder="Enter your manga title" class="input" name="mangaTitle" id="mangaTitle" type="text">
+            <input placeholder="Enter volume number" class="input" name="volumeNum" id="volumeNum" type="text">
+            <input class="button" type="submit" value="SEND">
         </form>
-        <img alt="manga_cover" src="<%= coverArt  %>">
-        <h1>Number of Volumes: <%= volumes %></h1>
+        <% if (locals.coverArt && locals.volumes) {%>
+            <div class="cover">
+                <img alt="manga_cover" src="<%= coverArt  %>" class="cover">
+                <h2>Number of Volumes: <%= volumes %></h2>
+            </div>
+        <% } %>
     </div>
 </body>
 </html>

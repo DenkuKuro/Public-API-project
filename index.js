@@ -5,13 +5,19 @@ import bodyParser from "body-parser";
 const app = express();
 const port = 3000;
 
-const title = 'Attack on titan';
+// const title = 'Attack on titan';
 const baseURl = 'https://api.mangadex.org';
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
+    res.render("index.ejs");
+});
+
+app.post("/manga-cover", async (req, res) => {
+    const title = req.body.mangaTitle;
+    const volume = req.body.volumeNum !== "" ? req.body.volumeNum : "1";
     try {
         const getManga = await axios.get(baseURl + "/manga/", {
             params: {
@@ -42,9 +48,9 @@ app.get("/", async (req, res) => {
                     },
                 });
                 volumeCover = mangaCovers.data.data.find( (value) => {
-                    return value.attributes.volume === "1";
+                    return value.attributes.volume === volume;
                 });
-                if (volumeCover !== undefined && volumeCover.attributes.volume === "1") break;
+                if (volumeCover !== undefined && volumeCover.attributes.volume === volume) break;
             } catch (error) {
                 console.error("Failed to make request for cover: ", error.message);
             }
@@ -58,7 +64,6 @@ app.get("/", async (req, res) => {
         console.error("Failed to make request:", error.message);
     }
 });
-
 
 
 app.listen(port, () => {
