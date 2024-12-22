@@ -5,7 +5,6 @@ import bodyParser from "body-parser";
 const app = express();
 const port = 3000;
 
-// const title = 'Attack on titan';
 const baseURl = 'https://api.mangadex.org';
 
 app.use(express.static("public"));
@@ -37,8 +36,9 @@ app.post("/manga-cover", async (req, res) => {
                 "manga[]": manga.id,
             },
         });
+        console.log(mangaCovers);
         let pageTotal = mangaCovers.data.total;  
-        while (page  < pageTotal) {
+        while (page < pageTotal) {
             try {
                 mangaCovers = await axios.get(baseURl + "/cover/", {
                     params: {
