@@ -56,7 +56,7 @@ app.post("/manga-cover", async (req, res) => {
             }
             page += 10;
         }
-        const mangaVolumes = manga.attributes.lastVolume;
+        const mangaVolumes = manga.attributes.lastVolume ? manga.attributes.lastVolume : "On going" ;
         const coverFileName = volumeCover.attributes.fileName;
         const coverArt = `https://uploads.mangadex.org/covers/${manga.id}/${coverFileName}.256.jpg`;
         res.render("index.ejs", { coverArt, volumes: mangaVolumes });
